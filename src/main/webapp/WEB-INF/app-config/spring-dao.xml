@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="
+ 		http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+ 		
+	<beans profile="inMemoryStorage">
+		<bean id="userDao" class="com.yra.springpr.dao.UserDaoMemoryImpl" /> 
+    	<bean name="eventDao, timetableDao" class="com.yra.springpr.dao.EventDaoMemoryImpl" />
+    	<bean id="bookingDao" class="com.yra.springpr.dao.BookingDaoMemoryImpl" />
+	</beans>
+	
+	<beans profile="jdbcDbStorage">
+		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		   	p:driverClassName="${jdbc.driverClassName}"
+		   	p:url="${jdbc.url}"
+		   	p:username="${jdbc.user}"
+		   	p:password="${jdbc.password}"
+		   	p:initialSize="${jdbc.pool.initSize}"
+		   	p:maxActive="${jdbc.pool.maxActive}" />
+		   
+		<bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+			<constructor-arg ref="dataSource" />
+		</bean>
+		
+		<bean id="abstractDao" abstract="true">
+		    <constructor-arg ref="jdbcTemplate" />
+		</bean>
+		
+		<bean id="userDao" class="com.yra.springpr.dao.UserDaoSpringJdbcImpl" parent="abstractDao" />
+		<bean id="eventDao" class="com.yra.springpr.dao.EventDaoSpringJdbcImpl" parent="abstractDao">
+			<constructor-arg ref="auditoriumService" />
+		</bean>    
+		<bean id="bookingDao" class="com.yra.springpr.dao.BookingDaoSpringJdbcImpl" parent="abstractDao" />
+		<bean id="timetableDao" class="com.yra.springpr.dao.TimetableDaoSpringJdbcImpl" parent="abstractDao" />
+		
+		<bean id="daoCleaner" class="com.yra.springpr.dao.util.DaoCleaner" parent="abstractDao" />
+	</beans>
+	
+</beans>
