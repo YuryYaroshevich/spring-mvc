@@ -5,14 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="/springmvc/resources/css/bootstrap-jquery.css">
-<script type="text/javascript" src="resources/js/bootstrap-jquery.js"></script>
+<link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="resources/css/custom.css" />
+<link rel="stylesheet" href="resources/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+<script type="text/javascript" src="resources/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="resources/bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="resources/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <title>Cinema</title>
 </head>
 <body>
 	<div class="container">
-
-		<!-- Static navbar -->
 		<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -53,24 +56,11 @@
 			<!--/.nav-collapse -->
 		</div>
 		<!--/.container-fluid --> </nav>
-
-		<!-- Main component for a primary marketing message or call to action -->
-		<div class="jumbotron">
-			<h1>Navbar example</h1>
-			<p>This example is a quick exercise to illustrate how the
-				default, static navbar and fixed to top navbar work. It includes the
-				responsive CSS and HTML, so it also adapts to your viewport and
-				device.</p>
-			<p>
-				<a class="btn btn-lg btn-primary" href="../../components/#navbar"
-					role="button">View navbar docs &raquo;</a>
-			</p>
+		<div class="span-19 last">
+			<tiles:insertAttribute name="body" />
 		</div>
-
 	</div>
 	<!-- /container -->
-	<div class="span-19 last">
-		<tiles:insertAttribute name="body" />
-	</div>
+
 </body>
 </html>
