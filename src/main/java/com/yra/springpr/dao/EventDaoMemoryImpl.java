@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 import com.yra.springpr.model.Auditorium;
@@ -15,6 +16,7 @@ import com.yra.springpr.model.EventTimetable;
 public class EventDaoMemoryImpl implements EventDao, TimetableDao {
     private Map<Long, Event> eventStorage = new HashMap<>();
     private Map<EventTimetable, Auditorium> timetable = new HashMap<>();
+    private Random random = new Random();
 
     @Override
     public Auditorium getAuditorium(EventTimetable eventTimetable) {
@@ -22,12 +24,22 @@ public class EventDaoMemoryImpl implements EventDao, TimetableDao {
     }
 
     @Override
-    public void save(Event event, List<Date> dates) {
+    public Event save(Event event, List<Date> dates) {
+        event.setId(generateId());
         eventStorage.put(event.getId(), event);
         for (Date date : dates) {
             EventTimetable eventTimetable = new EventTimetable(event, date);
             timetable.put(eventTimetable, null);
         }
+        return event;
+    }
+    
+    private Long generateId() {
+        Long newId = random.nextLong();
+        while (eventStorage.containsKey(newId)) {
+            newId = random.nextLong();
+        }
+        return newId;
     }
 
     @Override

@@ -7,7 +7,6 @@ import com.yra.springpr.dao.EventDao;
 import com.yra.springpr.model.Auditorium;
 import com.yra.springpr.model.Event;
 import com.yra.springpr.model.EventTimetable;
-import com.yra.springpr.model.Rating;
 
 public class EventServiceImpl implements EventService {
     private EventDao eventDao;
@@ -17,10 +16,8 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public Event create(String name, List<Date> dates, double price,
-            Rating rating) {
-        Event event = new Event(name, rating, price);
-        eventDao.save(event, dates);
+    public Event create(Event event, List<Date> dates) {
+        event = eventDao.save(event, dates);
         return event;
     }
 

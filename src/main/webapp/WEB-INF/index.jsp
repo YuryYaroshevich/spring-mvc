@@ -1,10 +1,6 @@
-<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="resources/css/custom.css" />
 <link rel="stylesheet" href="resources/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
@@ -12,9 +8,19 @@
 <script type="text/javascript" src="resources/bower_components/moment/min/moment.min.js"></script>
 <script type="text/javascript" src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="resources/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-<title>Cinema</title>
+
+<script src="resources/bower_components/angular/angular.js"></script>
+<script
+	src="resources/bower_components/angular-resource/angular-resource.js"></script>
+<script
+	src="resources/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="resources/js/app.js"></script>
+<script src="resources/js/controllers.js"></script>
+<script src="resources/js/services.js"></script>
+<meta charset="utf-8">
+<title>CINEMA</title>
 </head>
-<body>
+<body ng-app="springmvc">
 	<div class="container">
 		<nav class="navbar navbar-default">
 		<div class="container-fluid">
@@ -56,11 +62,7 @@
 			<!--/.nav-collapse -->
 		</div>
 		<!--/.container-fluid --> </nav>
-		<div class="span-19 last">
-			<tiles:insertAttribute name="body" />
-		</div>
+		<div ui-view></div>
 	</div>
-	<!-- /container -->
-
 </body>
 </html>

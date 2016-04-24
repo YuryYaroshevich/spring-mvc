@@ -38,7 +38,7 @@ public class EventDaoSpringJdbcImpl implements EventDao {
 	}
 
 	@Override
-	public void save(Event event, List<Date> dates) {
+	public Event save(Event event, List<Date> dates) {
 	    BeanPropertySqlParameterSource eventParams = new BeanPropertySqlParameterSource(event);
 	    eventParams.registerSqlType("rating", Types.VARCHAR);
 	    GeneratedKeyHolder eventIdHolder = new GeneratedKeyHolder();
@@ -53,6 +53,8 @@ public class EventDaoSpringJdbcImpl implements EventDao {
 		}
 		jdbcTemplate.batchUpdate("insert into timetable(event_id, event_date) values(:event_id, :event_date)",
 		       timetableParams);
+		
+		return event;
 	}
 
 	@Override

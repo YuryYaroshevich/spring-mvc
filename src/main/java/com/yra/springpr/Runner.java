@@ -53,7 +53,7 @@ public class Runner {
 				dateTimeFormatter.parse("02/05/2016 17:00:00"),
 				dateTimeFormatter.parse("02/05/2016 19:00:00"),
 				dateTimeFormatter.parse("02/05/2016 21:00:00"));
-		eventService.create("Survivor", dates, 10.5, Rating.MID);
+		eventService.create(new Event("Survivor", Rating.MID,  10.5), dates);
 		
 		BookingService bookingService = ctx.getBean("bookingService", BookingService.class);
 		Event event = eventService.getByName("Survivor");

@@ -10,7 +10,7 @@ import com.yra.springpr.model.EventTimetable;
 public interface EventDao {
     Auditorium getAuditorium(EventTimetable eventTimetable);
 
-    void save(Event event, List<Date> dates);
+    Event save(Event event, List<Date> dates);
 
     void remove(Event event);
 

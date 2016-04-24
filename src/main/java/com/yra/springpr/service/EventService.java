@@ -6,11 +6,10 @@ import java.util.List;
 import com.yra.springpr.model.Auditorium;
 import com.yra.springpr.model.Event;
 import com.yra.springpr.model.EventTimetable;
-import com.yra.springpr.model.Rating;
 
 public interface EventService {
 
-    Event create(String name, List<Date> dates, double price, Rating rating);
+    Event create(Event event, List<Date> dates);
 
     void remove(Event event);
 
