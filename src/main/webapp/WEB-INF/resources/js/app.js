@@ -5,11 +5,13 @@ angular
         'ngResource',
         'controllers',
         'services',
+        'directives',
         'ui.router'])
     .config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/');
         
-        $stateProvider.state('events', {
+        $stateProvider
+        .state('events', {
             url: '/',
             templateUrl: 'resources/views/events.html',
             controller: 'EventsCtrl',
@@ -18,5 +20,10 @@ angular
                     return Events();
                 }
             }
+        })
+        .state('addEvent', {
+            url: '/addEvent',
+            templateUrl: 'resources/views/addEvent.html',
+            controller: 'AddEventCtrl'
         });
     });

@@ -17,6 +17,7 @@
 <script src="resources/js/app.js"></script>
 <script src="resources/js/controllers.js"></script>
 <script src="resources/js/services.js"></script>
+<script src="resources/js/directives.js"></script>
 <meta charset="utf-8">
 <title>CINEMA</title>
 </head>

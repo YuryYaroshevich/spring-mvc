@@ -1,0 +1,27 @@
+<form ng-submit="createEvent()">
+	<div class="form-group">
+		<label for="name">Name</label> <input type="text" class="form-control"
+			name="name" placeholder="Name" ng-model="event.name" />
+	</div>
+	<div class="form-group">
+		<label for="price">Price</label> <input type="text"
+			class="form-control" name="price" placeholder="Price" ng-model="event.price" />
+	</div>
+	<div class="form-group">
+		<label for="rating">Rating</label>
+		<div class="radio">
+			<label><input type="radio" name="rating" value="HIGH" ng-model="event.rating">High</label>
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="rating" value="MID" ng-model="event.rating">Middle</label>
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="rating" value="LOW" ng-model="event.rating">Low</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="datetime">Date</label>
+		<multiple-date-picker dates="dates" />
+	</div>
+	<button type="submit" class="btn btn-default">Save</button>
+</form>

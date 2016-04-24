@@ -1,0 +1,10 @@
+<div>
+	<div  ng-repeat="date in dates track by $index" class='input-group date' id='datetimepicker{{$index}}'>
+		<input type='text' class="form-control" ng-model="dates[$index]"/> <span
+			class="input-group-addon"> <span
+			class="glyphicon glyphicon-calendar"></span>
+		</span>
+	</div>
+	<button class="btn btn-default btn-sm" ng-click="addDateInput()">+</button>
+	<button class="btn bnt-default btn-sm" ng-click="removeDateInput()" ng-show="showRemoveDateInput">-</button>
+</div>

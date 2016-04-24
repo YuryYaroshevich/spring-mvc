@@ -1,5 +1,5 @@
 <div class="items-list">
-	<div ng-repeat="event in events">
+	<div ng-repeat="event in events" class="item">
 		<h4 class="media-heading">{{event.name}}</h4>
 		<div>
 			<span>Price: {{event.basePrice}}</span> <span>Rating:
@@ -8,4 +8,4 @@
 	</div>
 </div>
 
-<button class="btn btn-primary btn-lg">Add</button>
+<a href="#/addEvent" class="btn btn-primary btn-lg">Add</a>

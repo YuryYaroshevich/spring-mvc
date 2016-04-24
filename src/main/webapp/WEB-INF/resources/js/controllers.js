@@ -6,3 +6,13 @@ controllers.controller('EventsCtrl', ['$scope', 'events',
     function ($scope, events) {
         $scope.events = events;
     }]);
+
+controllers.controller('AddEventCtrl', ['$scope', 'Event',
+    function ($scope, Event) {
+        $scope.event = {};
+        $scope.dates = [''];
+        $scope.createEvent = function () {
+            
+        };
+        
+    }]);
