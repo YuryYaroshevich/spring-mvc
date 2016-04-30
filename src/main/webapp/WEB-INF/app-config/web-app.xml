@@ -14,18 +14,7 @@
 	<mvc:annotation-driven />
 	<mvc:resources location="/WEB-INF/resources/" mapping="/resources/**" />
 
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/">indexController</prop>
-			</props>
-		</property>
-	</bean>
-
-	<bean name="indexController"
-		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
-		<property name="viewName" value="index" />
-	</bean>
+	<mvc:view-controller path="/" view-name="index"/>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"

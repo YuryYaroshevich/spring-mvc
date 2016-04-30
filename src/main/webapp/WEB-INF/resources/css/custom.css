@@ -1,3 +1,10 @@
 .items-list, .item {
 	margin-bottom: 10px;
 }
+
+.datetimepicker {
+	width: inherit
+}
+.input-group.datetimepicker > .form-control:last-child {
+	border-radius: 4px;
+}

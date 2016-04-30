@@ -1,6 +1,6 @@
 'use strict';
 
-var directives = angular.module('directives', []);
+var directives = angular.module('directives', ['ui.bootstrap', 'ui.bootstrap.datetimepicker']);
 
 directives.directive('multipleDatePicker',[function () {
     return {
@@ -11,8 +11,13 @@ directives.directive('multipleDatePicker',[function () {
             dates: '='
         },
         link: function (scope) {
-            var elem0 = angular.element(document.querySelector('#datetimepicker0'));
-            angular.element(elem0).triggerHandler('datetimepicker');
+            scope.picker = {
+                date: new Date()
+            };
+            scope.openCalendar = function(e) {
+                scope.picker.open = true;
+            };
+            
             scope.showRemoveDateInput = false;
             scope.addDateInput = function () {
                 var dates = scope.dates;

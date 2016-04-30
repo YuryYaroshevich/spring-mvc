@@ -2,18 +2,20 @@
 <html>
 <head>
 <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="resources/bower_components/angular-bootstrap/ui-bootstrap-csp.css" />
 <link rel="stylesheet" href="resources/css/custom.css" />
-<link rel="stylesheet" href="resources/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 <script type="text/javascript" src="resources/bower_components/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="resources/bower_components/moment/min/moment.min.js"></script>
 <script type="text/javascript" src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
 <script src="resources/bower_components/angular/angular.js"></script>
 <script
 	src="resources/bower_components/angular-resource/angular-resource.js"></script>
 <script
 	src="resources/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script type="text/javascript" src="resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script type="text/javascript" src="resources/bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js"></script>
+
+
 <script src="resources/js/app.js"></script>
 <script src="resources/js/controllers.js"></script>
 <script src="resources/js/services.js"></script>
