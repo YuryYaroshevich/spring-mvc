@@ -12,7 +12,13 @@ controllers.controller('AddEventCtrl', ['$scope', 'Event',
         $scope.event = {};
         $scope.dates = [''];
         $scope.createEvent = function () {
-            
+            $scope.event.dates = $scope.dates;
+            Event.save($scope.event, 
+                    function (resp) {
+                        console.log(resp);
+                    }, function (error) {
+                        console.log(error);
+                    });
         };
         
     }]);

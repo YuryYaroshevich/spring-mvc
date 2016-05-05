@@ -1,11 +1,25 @@
 package com.yra.springpr.model;
 
+import java.util.Date;
+import java.util.List;
+
 
 public class Event {
     private long id;
     private final String name;
     private final Rating rating;
     private final double basePrice;
+    private List<Date> dates;
+    
+    
+
+    public List<Date> getDates() {
+        return dates;
+    }
+
+    public void setDates(List<Date> dates) {
+        this.dates = dates;
+    }
 
     public Event(String name, Rating rating, double basePrice) {
         this.name = name;

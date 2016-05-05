@@ -11,23 +11,25 @@ directives.directive('multipleDatePicker',[function () {
             dates: '='
         },
         link: function (scope) {
-            scope.picker = {
-                date: new Date()
+            var DatePicker = function DatePicker (index) {
+                this.index = index;
             };
-            scope.openCalendar = function(e) {
-                scope.picker.open = true;
+            DatePicker.prototype.openCalendar = function (index) {
+                scope.datePickers[index].open = true;
             };
+            
+            scope.datePickers = [new DatePicker(0)];
             
             scope.showRemoveDateInput = false;
             scope.addDateInput = function () {
+                scope.datePickers.push(new DatePicker(scope.datePickers.length));
                 var dates = scope.dates;
                 dates.push('');
                 scope.showRemoveDateInput = true;
                 var lastIndex = dates.length - 1;
-                var elem = angular.element(document.querySelector('#datetimepicker' + lastIndex));
-                angular.element(elem).triggerHandler('datetimepicker');
             };
             scope.removeDateInput = function () {
+                scope.datePickers.pop();
                 var dates = scope.dates;
                 if (dates.length > 1) {
                     dates.pop();

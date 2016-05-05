@@ -3,7 +3,11 @@
 var services = angular.module('services', ['ngResource']);
 
 services.factory('Event', ['$resource', function ($resource) {
-    return $resource('event');
+    return $resource('event', {}, {
+        update: {
+            method: 'PUT'
+        }
+    });
 }]);
 
 services.factory('Events', ['$q', 'Event', function ($q, Event) {

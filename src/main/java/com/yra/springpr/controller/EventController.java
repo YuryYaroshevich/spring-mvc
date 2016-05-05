@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yra.springpr.model.Event;
@@ -31,9 +32,9 @@ public class EventController {
         return eventService.getAll().get(id);
     }
     
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Event> create(@RequestBody Event event, @RequestBody List<Date> dates) {
-        event = eventService.create(event, dates);
+    @RequestMapping(method = RequestMethod.POST)/*, @RequestParam Date dates*/
+    public ResponseEntity<Event> create(@RequestBody Event event) {
+        event = eventService.create(event, event.getDates());
         ResponseEntity<Event> response = new ResponseEntity<>(event, HttpStatus.CREATED);
         return response;
     }

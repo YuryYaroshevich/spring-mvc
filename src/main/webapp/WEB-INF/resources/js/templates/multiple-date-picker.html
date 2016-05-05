@@ -1,22 +1,16 @@
 <div>
-	<!-- <div  ng-repeat="date in dates track by $index" class='input-group date' id='datetimepicker{{$index}}'>
-		<input type='text' class="form-control" ng-model="dates[$index]"/> <span
-			class="input-group-addon"> <span
-			class="glyphicon glyphicon-calendar"></span>
-		</span>
-	</div>
-	<button class="btn btn-default btn-sm" ng-click="addDateInput()">+</button>
-	<button class="btn bnt-default btn-sm" ng-click="removeDateInput()" ng-show="showRemoveDateInput">-</button>
-	 -->
-	
 	<form class="form-horizontal">
         <div class="form-group">
-            <div class="col-sm-10">
+            <div class="col-sm-10" ng-repeat="date in dates track by $index">
                 <p class="input-group datetimepicker">
-                    <input type="text" class="form-control" ng-click="openCalendar($event)" datetime-picker="MM/dd/yyyy HH:mm" ng-model="picker.date" is-open="picker.open" />
-             
+                    <input type="text" class="form-control" ng-click="datePickers[$index].openCalendar($index)"
+                        datetime-picker="MM/dd/yyyy HH:mm" ng-model="dates[$index]" 
+                        is-open="datePickers[$index].open" />
                 </p>
             </div>
         </div>
+        <button class="btn btn-default btn-sm" ng-click="addDateInput()">+</button>
+		<button class="btn bnt-default btn-sm" ng-click="removeDateInput()"
+			ng-show="showRemoveDateInput">-</button>
     </form>
 </div>
