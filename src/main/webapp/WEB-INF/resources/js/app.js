@@ -25,5 +25,15 @@ angular
             url: '/addEvent',
             templateUrl: 'resources/views/addEvent.html',
             controller: 'AddEventCtrl'
-        });
+        })
+        .state('viewEvent', {
+            url: '/view',
+            templateUrl: 'resources/views/event.html',
+            controller: 'ViewEventCtrl',
+            resolve: {
+                event: function(EventLoader) {
+                    return EventLoader();
+                }
+            }
+        })
     });

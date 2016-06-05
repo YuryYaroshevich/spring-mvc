@@ -1,24 +1,17 @@
 package com.yra.springpr.model;
 
-import java.util.Date;
-import java.util.List;
+import java.io.Serializable;
 
 
-public class Event {
+
+public class Event implements Serializable {
+    private static final long serialVersionUID = -793436798754046892L;
     private long id;
-    private final String name;
-    private final Rating rating;
-    private final double basePrice;
-    private List<Date> dates;
+    private String name;
+    private Rating rating;
+    private double basePrice;
     
-    
-
-    public List<Date> getDates() {
-        return dates;
-    }
-
-    public void setDates(List<Date> dates) {
-        this.dates = dates;
+    public Event() {
     }
 
     public Event(String name, Rating rating, double basePrice) {

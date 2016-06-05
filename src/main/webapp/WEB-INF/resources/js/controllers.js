@@ -7,18 +7,21 @@ controllers.controller('EventsCtrl', ['$scope', 'events',
         $scope.events = events;
     }]);
 
-controllers.controller('AddEventCtrl', ['$scope', 'Event',
-    function ($scope, Event) {
+controllers.controller('AddEventCtrl', ['$scope', 'Event', '$state',
+    function ($scope, Event, $state) {
         $scope.event = {};
         $scope.dates = [''];
         $scope.createEvent = function () {
-            $scope.event.dates = $scope.dates;
-            Event.save($scope.event, 
-                    function (resp) {
-                        console.log(resp);
-                    }, function (error) {
-                        console.log(error);
-                    });
+            Event.save({dates: $scope.dates}, $scope.event, function (event) {
+                $state.go('viewEvent', {id: event.id});
+            }, function (error) {
+                console.log(error);
+            });
+            
         };
-        
+    }]);
+
+controllers.controller('ViewEventCtrl', ['$scope', 'Event', '$stateParams',
+    function ($scope, event, $stateParams) {
+        $scope.event = event;
     }]);

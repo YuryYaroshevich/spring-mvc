@@ -23,4 +23,6 @@ public interface EventDao {
     List<Event> getNextEvents(Date to);
 
     void assignAuditorium(EventTimetable eventTimetable, Auditorium auditorium);
+
+    Event get(long id);
 }

@@ -96,4 +96,10 @@ public class EventDaoMemoryImpl implements EventDao, TimetableDao {
 			return eventTimetable.getEvent().equals(event);
 		}).collect(Collectors.toList());
 	}
+
+    @Override
+    public Event get(long id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

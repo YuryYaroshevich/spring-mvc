@@ -52,4 +52,9 @@ public class EventServiceImpl implements EventService {
         eventDao.assignAuditorium(eventTimetable, auditorium);
     }
 
+    @Override
+    public Event get(long id) {
+        return eventDao.get(id);
+    }
+
 }

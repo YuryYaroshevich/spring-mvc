@@ -14,6 +14,8 @@ public interface EventService {
     void remove(Event event);
 
     Event getByName(String name);
+    
+    Event get(long id);
 
     List<Event> getAll();
 

@@ -107,4 +107,10 @@ public class EventDaoSpringJdbcImpl implements EventDao {
 		return new Event(rs.getInt("event_id"), rs.getString("name"), 
 				Rating.valueOf(rs.getString("rating")), rs.getDouble("base_price"));
 	}
+
+    @Override
+    public Event get(long id) {
+        Map<String, Object> params = Collections.singletonMap("id", id);
+        return jdbcTemplate.queryForObject("select * from event where id = :id", params, this::mapEvent);
+    }
 }
