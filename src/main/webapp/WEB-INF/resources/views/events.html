@@ -4,9 +4,9 @@
 		<div>
 			<span>Price: {{event.basePrice}}</span> <span>Rating:
 				{{event.rating}}</span>
-			<a ui-sref="viewEvent/{{event.id}}" class="btn btn-link">view</a>
+			<a ui-sref="viewEvent({id: event.id})" class="btn btn-link">view</a>
 		</div>
 	</div>
 </div>
 
-<a href="#/addEvent" class="btn btn-primary btn-lg">Add</a>
+<a ui-sref="addEvent" class="btn btn-primary btn-lg">Add</a>

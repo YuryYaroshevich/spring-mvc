@@ -27,12 +27,13 @@ angular
             controller: 'AddEventCtrl'
         })
         .state('viewEvent', {
-            url: '/view',
+            url: '/view/:id',
             templateUrl: 'resources/views/event.html',
             controller: 'ViewEventCtrl',
             resolve: {
-                event: function(EventLoader) {
+                event: function(Event) {
                     return EventLoader();
+                   // Event.get({id: $stateParams.id}, function(event) {});
                 }
             }
         })

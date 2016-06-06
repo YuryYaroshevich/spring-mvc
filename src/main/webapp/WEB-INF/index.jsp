@@ -65,7 +65,9 @@
 			<!--/.nav-collapse -->
 		</div>
 		<!--/.container-fluid --> </nav>
-		<div ui-view></div>
+		<div>
+			<ui-view><i>Events are going to load...</i></ui-view>
+		</div>
 	</div>
 </body>
 </html>

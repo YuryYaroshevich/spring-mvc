@@ -21,7 +21,7 @@ controllers.controller('AddEventCtrl', ['$scope', 'Event', '$state',
         };
     }]);
 
-controllers.controller('ViewEventCtrl', ['$scope', 'Event', '$stateParams',
-    function ($scope, event, $stateParams) {
+controllers.controller('ViewEventCtrl', ['$scope', 'event',
+    function ($scope, event) {
         $scope.event = event;
     }]);
