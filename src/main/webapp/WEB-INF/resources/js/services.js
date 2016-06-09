@@ -3,7 +3,7 @@
 var services = angular.module('services', ['ngResource']);
 
 services.factory('Event', ['$resource', function ($resource) {
-    return $resource('event', {}, {
+    return $resource('event/:id', {id: '@id'}, {
         update: {
             method: 'PUT'
         }
@@ -21,11 +21,10 @@ services.factory('Events', ['$q', 'Event', function ($q, Event) {
 }]);
 
 
-services.factory('EventLoader', ['Event', '$stateParams', '$q',
-    function(Event, $stateParams, $q) {
-        return function() {
+services.factory('EventLoader', ['Event', '$q',
+    function(Event, $q) {
+        return function(eventId) {
             var delay = $q.defer();
-            var eventId = $stateParams.id;
             Event.get({
                 id: eventId
             }, function(event) {

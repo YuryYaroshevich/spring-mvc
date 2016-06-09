@@ -31,9 +31,8 @@ angular
             templateUrl: 'resources/views/event.html',
             controller: 'ViewEventCtrl',
             resolve: {
-                event: function(Event) {
-                    return EventLoader();
-                   // Event.get({id: $stateParams.id}, function(event) {});
+                event: function(EventLoader, $stateParams) {
+                    return EventLoader($stateParams.id);
                 }
             }
         })

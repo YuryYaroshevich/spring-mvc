@@ -1,6 +1,7 @@
 package com.yra.springpr.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 
 
@@ -10,6 +11,8 @@ public class Event implements Serializable {
     private String name;
     private Rating rating;
     private double basePrice;
+    
+    private List<EventTimetable> timetable;
     
     public Event() {
     }
@@ -47,7 +50,15 @@ public class Event implements Serializable {
         return basePrice;
     }
    
-	@Override
+	public List<EventTimetable> getTimetable() {
+        return timetable;
+    }
+
+    public void setTimetable(List<EventTimetable> timetable) {
+        this.timetable = timetable;
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
@@ -57,6 +68,8 @@ public class Event implements Serializable {
         result = prime * result + (int) (id ^ (id >>> 32));
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((rating == null) ? 0 : rating.hashCode());
+        result = prime * result
+                + ((timetable == null) ? 0 : timetable.hashCode());
         return result;
     }
 
@@ -81,12 +94,17 @@ public class Event implements Serializable {
             return false;
         if (rating != other.rating)
             return false;
+        if (timetable == null) {
+            if (other.timetable != null)
+                return false;
+        } else if (!timetable.equals(other.timetable))
+            return false;
         return true;
     }
 
     @Override
     public String toString() {
         return "Event [id=" + id + ", name=" + name + ", rating=" + rating
-                + ", basePrice=" + basePrice + "]";
+                + ", basePrice=" + basePrice + ", timetable=" + timetable + "]";
     }
 }

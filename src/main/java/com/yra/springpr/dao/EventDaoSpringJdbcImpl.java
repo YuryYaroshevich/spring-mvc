@@ -111,6 +111,6 @@ public class EventDaoSpringJdbcImpl implements EventDao {
     @Override
     public Event get(long id) {
         Map<String, Object> params = Collections.singletonMap("id", id);
-        return jdbcTemplate.queryForObject("select * from event where id = :id", params, this::mapEvent);
+        return jdbcTemplate.queryForObject("select * from event where event_id = :id", params, this::mapEvent);
     }
 }
