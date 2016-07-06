@@ -22,8 +22,8 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void remove(Event event) {
-        eventDao.remove(event);
+    public void remove(long id) {
+        eventDao.remove(id);
     }
 
     @Override

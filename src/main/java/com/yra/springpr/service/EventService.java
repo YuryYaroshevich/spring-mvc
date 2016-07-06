@@ -11,7 +11,7 @@ public interface EventService {
 
     Event create(Event event, List<Date> dates);
 
-    void remove(Event event);
+    void remove(long id);
 
     Event getByName(String name);
     

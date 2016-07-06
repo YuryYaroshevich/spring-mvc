@@ -5,6 +5,7 @@
 			<span>Price: {{event.basePrice}}</span> <span>Rating:
 				{{event.rating}}</span>
 			<a ui-sref="viewEvent({id: event.id})" class="btn btn-link">view</a>
+			<a href="javascript:void(0)" ng-click="removeEvent(event)" class="btn btn-link">delete</a>
 		</div>
 	</div>
 </div>

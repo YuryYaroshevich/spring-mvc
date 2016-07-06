@@ -43,11 +43,11 @@ public class EventDaoMemoryImpl implements EventDao, TimetableDao {
     }
 
     @Override
-    public void remove(Event event) {
-        eventStorage.remove(event.getId());
+    public void remove(long id) {
+        eventStorage.remove(id);
         for (Iterator<EventTimetable> iter = timetable.keySet().iterator(); iter.hasNext();) {
             EventTimetable eventTimetable = iter.next();
-            if (event.equals(eventTimetable.getEvent())) {
+            if (id == eventTimetable.getEvent().getId()) {
                 iter.remove();
             }
         }

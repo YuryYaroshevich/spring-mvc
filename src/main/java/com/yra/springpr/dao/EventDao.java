@@ -12,7 +12,7 @@ public interface EventDao {
 
     Event save(Event event, List<Date> dates);
 
-    void remove(Event event);
+    void remove(long id);
 
     Event getByName(String name);
 

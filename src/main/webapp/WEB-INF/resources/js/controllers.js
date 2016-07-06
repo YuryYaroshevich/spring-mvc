@@ -2,9 +2,18 @@
 
 var controllers = angular.module('controllers', []);
 
-controllers.controller('EventsCtrl', ['$scope', 'events', 
-    function ($scope, events) {
+controllers.controller('EventsCtrl', ['$scope', 'events', 'Event', 
+    function ($scope, events, Event) {
         $scope.events = events;
+        
+        $scope.removeEvent = function (event) {
+        	Event.remove(event, function (msg) {
+        		console.log(msg);
+        		$state.go('events');
+        	}, function (error) {
+        		console.log(error);
+        	});
+        };
     }]);
 
 controllers.controller('AddEventCtrl', ['$scope', 'Event', '$state',

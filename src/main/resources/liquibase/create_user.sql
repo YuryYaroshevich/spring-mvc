@@ -1,2 +1,2 @@
-CREATE USER 'batman'@'localhost' IDENTIFIED BY '1234';
-GRANT ALL ON spring_pr.* TO 'batman'@'localhost';
+CREATE USER 'batman2'@'localhost' IDENTIFIED BY 'root';
+GRANT ALL ON spring_pr.* TO 'batman2'@'localhost';

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yra.springpr.controller.util.ErrorMessage;
+import com.yra.springpr.controller.util.InfoMessage;
+import com.yra.springpr.controller.util.Message;
 import com.yra.springpr.model.Event;
 import com.yra.springpr.service.EventService;
 import com.yra.springpr.service.TimetableService;
@@ -38,7 +40,7 @@ public class EventController {
         return eventService.get(id);
     }
     
-    @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces="application/json")
+    @RequestMapping(method = RequestMethod.POST, consumes = "application/json", produces = "application/json")
     public ResponseEntity<Event> create(@RequestBody Event event, 
             @RequestParam @DateTimeFormat(pattern="yyyy-MM-dd'T'HH:mm:ss.SSSXXX") List<Date> dates) {
         event = eventService.create(event, dates);
@@ -46,10 +48,16 @@ public class EventController {
         return response;
     }
     
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<InfoMessage> delete(@PathVariable long id) {
+    	eventService.remove(id);
+    	ResponseEntity<InfoMessage> response = new ResponseEntity<>(new InfoMessage("Event was deleted."), HttpStatus.OK);
+    	return response;
+    }
+    
     @ExceptionHandler(Exception.class)
-    @ResponseBody
-    public String handleException1(Exception ex)
+    public ResponseEntity<ErrorMessage> handleException(Exception ex)
     {
-        return ex.getMessage();
+        return new ResponseEntity<>(new ErrorMessage(ex.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

@@ -80,7 +80,8 @@
 	
 	<changeSet id="create_foreign_key_from_event_id" author="Yury.Yaroshevich">
 		<addForeignKeyConstraint baseColumnNames="event_id" baseTableName="timetable"
-			constraintName="fk_timetable_event" referencedColumnNames="event_id" referencedTableName="event" />
+			constraintName="fk_timetable_event" referencedColumnNames="event_id"
+			onDelete="CASCADE" referencedTableName="event" />
 	</changeSet>
 	
 	<changeSet id="create_booking_table" author="Yury.Yaroshevich">
@@ -93,9 +94,11 @@
 			</column>
 		</createTable>
 		<addForeignKeyConstraint baseColumnNames="user_id" baseTableName="booking"
-			constraintName="fk_booking_user" referencedColumnNames="user_id" referencedTableName="user" />
+			constraintName="fk_booking_user" referencedColumnNames="user_id"
+			onDelete="CASCADE" referencedTableName="user" />
 		<addForeignKeyConstraint baseColumnNames="timetable_id" baseTableName="booking"
-			constraintName="fk_booking_timetable" referencedColumnNames="timetable_id" referencedTableName="timetable" />	
+			constraintName="fk_booking_timetable" referencedColumnNames="timetable_id" 
+			onDelete="CASCADE" referencedTableName="timetable" />	
 	</changeSet>
 	
 	<changeSet id="nullable_auditorium_id" author="Yury.Yaroshevich">
@@ -126,7 +129,8 @@
             </column>	        	
 	    </createTable>
 	    <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="event_statistics"
-	        constraintName="fk_event_id" referencedColumnNames="event_id" referencedTableName="event" />
+	        constraintName="fk_event_id" referencedColumnNames="event_id" 
+	        onDelete="CASCADE" referencedTableName="event" />
 	</changeSet>
 	
 	<changeSet id="discount_statistics_table" author="Yury.Yaroshevich">
@@ -142,7 +146,8 @@
 	        </column>
 	    </createTable>
 	    <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="discount_statistics"
-	        constraintName="fk_user_id" referencedColumnNames="user_id" referencedTableName="user" />
+	        constraintName="fk_user_id" referencedColumnNames="user_id"
+	        onDelete="CASCADE" referencedTableName="user" />
 	</changeSet>
 	
 	<changeSet id="event_stat_primary_key" author="Yury.Yaroshevich">

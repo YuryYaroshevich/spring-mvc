@@ -58,10 +58,12 @@ public class EventDaoSpringJdbcImpl implements EventDao {
 	}
 
 	@Override
-	public void remove(Event event) {
-		Map<String, Object> params = Collections.singletonMap("id", event.getId());
-		jdbcTemplate.update("delete from event where event_id = :id", params);		
+	public void remove(long id) {
+		Map<String, Object> params = Collections.singletonMap("id", id);
+		
 		jdbcTemplate.update("delete from timetable where event_id = :id", params);
+		jdbcTemplate.update("delete from event_statistics where event_id = :id", params);
+		jdbcTemplate.update("delete from event where event_id = :id", params);
 	}
 
 	@Override
