@@ -176,8 +176,8 @@
 	
 	<changeSet id="grant_statisitcs_procedures_to_user" author="Yury.Yaroshevich">
 		<sql>
-			grant execute on procedure spring_pr.add_to_event_statistics to 'batman'@'localhost';
-			grant execute on procedure spring_pr.add_to_discount_statistics to 'batman'@'localhost';
+			grant execute on procedure spring_pr.add_to_event_statistics to 'batman5'@'localhost';
+			grant execute on procedure spring_pr.add_to_discount_statistics to 'batman5'@'localhost';
 		</sql>
 	</changeSet>
 	

@@ -4,8 +4,10 @@ import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standaloneSetup;
 
 import java.util.List;
@@ -45,7 +47,7 @@ public class EventControllerTest {
     }
     
     @Test
-    public void test() throws Exception {
+    public void testCreateEvent() throws Exception {
         mockMvc.perform(
                 post("/event?dates={dates}", "2016-06-27T15:57:36.505Z, 2016-06-28T14:27:36.505Z")
                 .content("{\"name\": \"sfs\", \"basePrice\": \"23\", \"rating\": \"HIGH\"}")
@@ -55,5 +57,16 @@ public class EventControllerTest {
          .andExpect(status().isCreated());
         
         verify(eventService, times(1)).create(any(Event.class), any(List.class));
+    }
+    
+    @Test
+    public void testDeleteEvent() throws Exception {
+    	mockMvc.perform(delete("/event/{id}", 3))
+    		.andDo(print())
+    		.andExpect(status().isOk())
+    		.andExpect(jsonPath("$.message").value("Event was deleted."))
+    		.andExpect(jsonPath("$.error").value(false));
+    	
+    	verify(eventService, times(1)).remove(3);
     }
 }

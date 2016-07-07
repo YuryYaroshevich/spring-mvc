@@ -1,14 +1,26 @@
 package com.yra.springpr.controller.util;
 
-public abstract class Message {
+import java.io.Serializable;
+
+public abstract class Message implements Serializable {
+	private static final long serialVersionUID = 9169106508404516162L;
+
 	private final boolean error;
 	private final String message;
 	
 	public Message(boolean error, String message) {
 		this.error = error;
 		this.message = message;
+	}	
+	
+	public boolean isError() {
+		return error;
 	}
 	
+	public String getMessage() {
+		return message;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

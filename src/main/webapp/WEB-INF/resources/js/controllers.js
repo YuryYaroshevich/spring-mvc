@@ -2,14 +2,19 @@
 
 var controllers = angular.module('controllers', []);
 
-controllers.controller('EventsCtrl', ['$scope', 'events', 'Event', 
-    function ($scope, events, Event) {
+controllers.controller('EventsCtrl', ['$scope', '$state', 'events', 'Event', 
+    function ($scope, $state, events, Event) {
         $scope.events = events;
+        $scope.$state = $state;
+        
+        $scope.$watch('$state.$current.locals.globals.events', function (events) {
+            $scope.events = events;
+        });
         
         $scope.removeEvent = function (event) {
-        	Event.remove(event, function (msg) {
+        	Event.remove({id: event.id}, function (msg) {
         		console.log(msg);
-        		$state.go('events');
+        		$state.reload();
         	}, function (error) {
         		console.log(error);
         	});
