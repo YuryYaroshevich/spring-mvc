@@ -10,12 +10,14 @@ import com.yra.springpr.model.EventTimetable;
 
 public class EventServiceImpl implements EventService {
     private EventDao eventDao;
-    
-    public EventServiceImpl(EventDao eventDao) {
-        this.eventDao = eventDao;
-    }
+    private TimetableService timetableService;
 
-    @Override
+	public EventServiceImpl(EventDao eventDao, TimetableService timetableService) {
+		this.eventDao = eventDao;
+		this.timetableService = timetableService;
+	}
+
+	@Override
     public Event create(Event event, List<Date> dates) {
         event = eventDao.save(event, dates);
         return event;
@@ -54,7 +56,8 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Event get(long id) {
-        return eventDao.get(id);
+    	Event event = eventDao.get(id);
+    	event.setTimetable(timetableService.getTimetable(event));
+        return event;
     }
-
 }

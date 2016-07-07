@@ -2,8 +2,11 @@ package com.yra.springpr.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 public class EventTimetable {
     private int id;
+    @JsonIgnore
     private Event event;
     private Date date;
 

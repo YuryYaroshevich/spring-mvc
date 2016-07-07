@@ -35,7 +35,16 @@ controllers.controller('AddEventCtrl', ['$scope', 'Event', '$state',
         };
     }]);
 
-controllers.controller('ViewEventCtrl', ['$scope', 'event',
-    function ($scope, event) {
+controllers.controller('ViewEventCtrl', ['$scope','$state', 'Event', 'event',
+    function ($scope, $state, Event, event) {
         $scope.event = event;
+        
+        $scope.removeEvent = function (event) {
+        	Event.remove({id: event.id}, function (msg) {
+        		console.log(msg);
+        		$state.go('events');
+        	}, function (error) {
+        		console.log(error);
+        	});
+        };
     }]);

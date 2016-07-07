@@ -1,5 +1,15 @@
 <div>
-<p>{{event.name}}</p>
-<p>{{event.rating}}</p>
-<p>{{event.basePrice}}</p>
+	<p>{{event.name}}</p>
+	<p>{{event.rating}}</p>
+	<p>{{event.basePrice}}</p>
+	<div>
+		<div ng-repeat="timetable in event.timetable">
+			{{timetable.date}} <a href="javascript:void(0)">Assign auditorium</a>
+		</div>
+	</div>
 </div>
+
+
+<a href="javascript:void(0)" ng-click="removeEvent(event)"
+	class="btn btn-primary">delete</a>
+<a ui-sref="events" class="btn btn-link">Back to list</a>
