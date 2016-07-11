@@ -12,8 +12,7 @@ controllers.controller('EventsCtrl', ['$scope', '$state', 'events', 'Event',
         });
         
         $scope.removeEvent = function (event) {
-        	Event.remove({id: event.id}, function (msg) {
-        		console.log(msg);
+        	Event.remove({id: event.id}, function () {
         		$state.reload();
         	}, function (error) {
         		console.log(error);
@@ -35,9 +34,15 @@ controllers.controller('AddEventCtrl', ['$scope', 'Event', '$state',
         };
     }]);
 
-controllers.controller('ViewEventCtrl', ['$scope','$state', 'Event', 'event',
-    function ($scope, $state, Event, event) {
+controllers.controller('ViewEventCtrl', ['$scope','$state', '$uibModal', 
+                                         'Event', 'event', 'auditoriums',
+                                         'Timetable',
+    function ($scope, $state, $uibModal, Event, event, auditoriums, Timetable) {
         $scope.event = event;
+        
+        /*$scope.$watch('$state.$current.locals.globals.event', function (event) {
+            $scope.event = event;
+        });*/
         
         $scope.removeEvent = function (event) {
         	Event.remove({id: event.id}, function (msg) {
@@ -47,4 +52,47 @@ controllers.controller('ViewEventCtrl', ['$scope','$state', 'Event', 'event',
         		console.log(error);
         	});
         };
+        
+        $scope.assignAuditorium = function () {
+        	var modalInstance = $uibModal.open({
+            	animation: true,
+            	templateUrl: 'resources/js/templates/modal/content.html',
+            	controller: 'AuditoriumModalCtrl',
+            	size: 'modal-sm',
+            	resolve: {
+    	        	auditoriums: function () {
+    	        		return auditoriums;
+    	        	}
+            	},
+            	backdrop: 'static'
+            });
+        	
+        	modalInstance.result.then(function (selectedAuditorium) {
+        		Timetable.assignAuditorium({id: $scope.event.id, auditoriumId: selectedAuditorium.id}, 
+        				function (data) {
+        					console.log(data);
+        					$state.reload();
+        				},
+        				function (error) {
+        					console.log(data);
+        				}
+        		);
+            });
+        };
     }]);
+
+controllers.controller('AuditoriumModalCtrl', ['$scope', '$uibModalInstance', 'auditoriums', 
+    function ($scope, $uibModalInstance, auditoriums) {
+		$scope.auditoriums = auditoriums;
+		
+		$scope.selected = {
+			selectedIndex: 0
+		};
+		$scope.select = function () {
+			$uibModalInstance.close($scope.auditoriums[$scope.selected.selectedIndex]);
+		};
+
+		$scope.cancel = function () {
+			$uibModalInstance.dismiss();
+		};
+}]);

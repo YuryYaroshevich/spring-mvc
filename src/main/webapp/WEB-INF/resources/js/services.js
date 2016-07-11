@@ -29,10 +29,37 @@ services.factory('EventLoader', ['Event', '$q',
                 id: eventId
             }, function(event) {
                 delay.resolve(event);
-            }, function() {
-                delay.reject('Unable to load event with id = ' + eventId);
+            }, function(msg) {
+            	if (msg.data.error) {
+            		console.log(msg.data.message);
+            	}
             });
             return delay.promise;
         };
     }
 ]);
+
+services.factory('Auditorium', ['$resource', function ($resource) {
+	return $resource('auditorium/:id', {id: '@id'}, {update: {
+        method: 'PUT'
+    }});
+}]);
+
+services.factory('Auditoriums', ['$q', 'Auditorium', function ($q, Auditorium) {
+	return function () {
+		var delay = $q.defer();
+		Auditorium.query(function (auditoriums) {
+			delay.resolve(auditoriums);
+		});
+		return delay.promise;
+	};
+}]);
+
+
+services.factory('Timetable', ['$resource', function ($resource) {
+	return $resource('timetable/:id', {id: '@id'}, {
+		assignAuditorium: {
+			method: 'PUT'
+		}
+	});
+}]);

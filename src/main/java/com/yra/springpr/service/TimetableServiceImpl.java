@@ -17,5 +17,11 @@ public class TimetableServiceImpl implements TimetableService {
     public List<EventTimetable> getTimetable(Event event) {
         return timetableDao.getEventTimetables(event);
     }
+    
+    @Override
+    public void assignAuditorium(long timetableId, int auditoriumId) {
+    	timetableDao.assignAuditorium(timetableId, auditoriumId);
+    }
+
 
 }

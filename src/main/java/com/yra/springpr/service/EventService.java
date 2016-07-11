@@ -3,9 +3,7 @@ package com.yra.springpr.service;
 import java.util.Date;
 import java.util.List;
 
-import com.yra.springpr.model.Auditorium;
 import com.yra.springpr.model.Event;
-import com.yra.springpr.model.EventTimetable;
 
 public interface EventService {
 
@@ -22,7 +20,4 @@ public interface EventService {
     List<Event> getForDateRange(Date from, Date to);
 
     List<Event> getNextEvents(Date to);
-
-    void assignAuditorium(EventTimetable eventTimetable, Auditorium auditorium);
-
 }

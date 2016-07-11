@@ -19,15 +19,12 @@ import com.yra.springpr.controller.util.ErrorMessage;
 import com.yra.springpr.controller.util.InfoMessage;
 import com.yra.springpr.model.Event;
 import com.yra.springpr.service.EventService;
-import com.yra.springpr.service.TimetableService;
 
 @RestController
 @RequestMapping("/event")
 public class EventController {
     @Autowired
     private EventService eventService;
-    @Autowired
-    private TimetableService timetableService;
     
     @RequestMapping(method = RequestMethod.GET)
     public List<Event> getEvents() {

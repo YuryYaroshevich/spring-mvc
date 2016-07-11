@@ -2,7 +2,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="resources/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="resources/bower_components/angular-bootstrap/ui-bootstrap-csp.css" />
+<link rel="stylesheet" href="resources/bower_components/angular-bootstrap2/ui-bootstrap-custom-1.3.3-csp.css" />
 <link rel="stylesheet" href="resources/css/custom.css" />
 <script type="text/javascript" src="resources/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="resources/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -12,7 +12,7 @@
 	src="resources/bower_components/angular-resource/angular-resource.js"></script>
 <script
 	src="resources/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-<script type="text/javascript" src="resources/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script type="text/javascript" src="resources/bower_components/angular-bootstrap2/ui-bootstrap-custom-tpls-1.3.3.min.js"></script>
 <script type="text/javascript" src="resources/bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js"></script>
 
 
@@ -35,11 +35,11 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="#">event pusher</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
+					<li class="active"><a href="#">Events</a></li>
 					<li><a href="#">About</a></li>
 					<li><a href="#">Contact</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"

@@ -67,7 +67,7 @@ public class Runner {
 		}
 		AuditoriumService auditoriumService = ctx.getBean("auditoriumService", AuditoriumService.class);
 		Auditorium auditorium = auditoriumService.getAuditoriumById(1);
-		eventService.assignAuditorium(eventTimetable, auditorium);
+		timetableService.assignAuditorium(eventTimetable.getId(), auditorium.getId());
 		
 		Booking booking = new Booking(eventTimetable, Sets.newHashSet(19,20));
 		double ticketPrice = bookingService.getTicketPrice(booking, user);

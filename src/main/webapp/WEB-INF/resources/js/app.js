@@ -33,6 +33,9 @@ angular
             resolve: {
                 event: function(EventLoader, $stateParams) {
                     return EventLoader($stateParams.id);
+                },
+                auditoriums: function(Auditoriums) {
+                	return Auditoriums();
                 }
             }
         })

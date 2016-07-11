@@ -1,9 +1,12 @@
 package com.yra.springpr.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class Auditorium {
-    private final int id;
+public class Auditorium implements Serializable {
+	private static final long serialVersionUID = -5041710588549860110L;
+	
+	private final int id;
     private final int seatsNumber;
     private final Set<Integer> vipSeats;
     private final int vipSeatPrice;

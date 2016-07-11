@@ -1,6 +1,6 @@
 'use strict';
 
-var directives = angular.module('directives', ['ui.bootstrap', 'ui.bootstrap.datetimepicker']);
+var directives = angular.module('directives', ['ui.bootstrap', 'ui.bootstrap.datetimepicker', 'ui.bootstrap.modal']);
 
 directives.directive('multipleDatePicker',[function () {
     return {

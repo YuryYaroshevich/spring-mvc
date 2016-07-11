@@ -4,7 +4,9 @@
 	<p>{{event.basePrice}}</p>
 	<div>
 		<div ng-repeat="timetable in event.timetable">
-			{{timetable.date}} <a href="javascript:void(0)">Assign auditorium</a>
+			{{timetable.date | date:'medium'}}
+			<p ng-show="timetable.auditorium">Auditorium: {{timetable.auditorium.id}}</p>
+			<a ng-hide="timetable.auditorium" href="javascript:void(0)" ng-click="assignAuditorium()">Assign auditorium</a>
 		</div>
 	</div>
 </div>

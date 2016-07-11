@@ -7,4 +7,6 @@ import com.yra.springpr.model.EventTimetable;
 
 public interface TimetableDao {
     List<EventTimetable> getEventTimetables(Event event);
+    
+    void assignAuditorium(long timetableId, int auditoriumId);
 }

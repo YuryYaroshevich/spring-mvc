@@ -4,9 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.yra.springpr.dao.EventDao;
-import com.yra.springpr.model.Auditorium;
 import com.yra.springpr.model.Event;
-import com.yra.springpr.model.EventTimetable;
 
 public class EventServiceImpl implements EventService {
     private EventDao eventDao;
@@ -46,12 +44,6 @@ public class EventServiceImpl implements EventService {
     @Override
     public List<Event> getNextEvents(Date to) {
         return eventDao.getNextEvents(to);
-    }
-
-    @Override
-    public void assignAuditorium(EventTimetable eventTimetable,
-            Auditorium auditorium) {
-        eventDao.assignAuditorium(eventTimetable, auditorium);
     }
 
     @Override

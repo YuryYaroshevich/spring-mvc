@@ -90,17 +90,6 @@ public class EventDaoSpringJdbcImpl implements EventDao {
 		return jdbcTemplate.query("select distinct event_id, name, rating, base_price from event e inner join timetable t on e.event_id = t.event_id where event_date <= :to",
 		        params, this::mapEvent);
 	}
-
-	@Override
-	public void assignAuditorium(EventTimetable eventTimetable,
-			Auditorium auditorium) {
-		MapSqlParameterSource params = new MapSqlParameterSource();
-		params.addValue("event_id", eventTimetable.getEvent().getId());
-		params.addValue("date", new java.sql.Date(eventTimetable.getDate().getTime()), Types.TIMESTAMP);
-		params.addValue("auditorium_id", auditorium.getId());
-		jdbcTemplate.update("update timetable set auditorium_id = :auditorium_id where event_date = :date and event_id = :event_id",
-		       params);
-	}
 	
 	private Event mapEvent(ResultSet rs, int i) throws SQLException {
 		return new Event(rs.getInt("event_id"), rs.getString("name"), 

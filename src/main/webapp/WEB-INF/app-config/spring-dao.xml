@@ -7,11 +7,11 @@
  		http://www.springframework.org/schema/beans
  		http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
  		
-	<beans profile="inMemoryStorage">
+	<!-- <beans profile="inMemoryStorage">
 		<bean id="userDao" class="com.yra.springpr.dao.UserDaoMemoryImpl" /> 
     	<bean name="eventDao, timetableDao" class="com.yra.springpr.dao.EventDaoMemoryImpl" />
     	<bean id="bookingDao" class="com.yra.springpr.dao.BookingDaoMemoryImpl" />
-	</beans>
+	</beans> -->
 	
 	<beans profile="jdbcDbStorage">
 		<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"

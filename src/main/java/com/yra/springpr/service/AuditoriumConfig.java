@@ -18,7 +18,7 @@ import com.yra.springpr.model.Auditorium;
 import com.yra.springpr.util.StringToSet;
 
 @Configuration
-public class AuditoriumConfig {    
+public class AuditoriumConfig {
     @Autowired
     private Converter<String, Set<Integer>> stringToSetConverter = new StringToSet();
     

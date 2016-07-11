@@ -1,0 +1,14 @@
+<div modal="open">
+    <div class="modal-header">
+        <h4>Select auditorium</h4>
+    </div>
+    <div class="modal-body">
+		<p ng-repeat="auditorium in auditoriums">
+			<input type="radio" name="auditorium" ng-model="selected.selectedIndex" ng-value="{{$index}}" />{{auditorium.id}}
+		</p>
+    </div>
+    <div class="modal-footer">
+    	<button class="btn btn-success" ng-click="select()">Select</button>
+    	<button class="btn cancel" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
